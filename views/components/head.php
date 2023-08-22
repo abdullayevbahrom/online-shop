@@ -11,5 +11,5 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/templatemo-style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
-    <title><?= $title ?? 'Storage management panel' ?></title>
+    <title><?= $title ?? 'Online Shop' ?></title>
 </head>
