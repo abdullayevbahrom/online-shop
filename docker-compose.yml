@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  php:
+    container_name: online_shop_php
+    build: ./docker
+    restart: unless-stopped
+    volumes:
+      - './:/var/www/html'
+    ports:
+      - '127.0.0.1:9020:80'
+    depends_on:
+      - mysql
+  mysql:
+    image: mariadb:10.5.2
+    container_name: online_shop_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'secret'
+      MYSQL_DATABASE: 'online_shop'
+      MYSQL_USER: 'root'
+      TZ: Asia/Tashkent
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - ./docker/db:/var/lib/mysql
+    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-time-zone=+05:00' ]
+    ports:
+      - '127.0.0.1:9021:3306'
+  adminer:
+    container_name: online_shop_adminer
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:9022:8080'

@@ -1,0 +1,5 @@
+/.fleet
+/.idea
+/.vscode
+/docker/db
+/vendor
